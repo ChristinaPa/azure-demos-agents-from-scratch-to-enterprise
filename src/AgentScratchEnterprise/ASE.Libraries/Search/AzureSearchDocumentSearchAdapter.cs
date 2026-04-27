@@ -25,6 +25,17 @@ public class AzureSearchDocumentSearchAdapter : ISearchService
             SemanticSearch = new SemanticSearchOptions
             {
                 SemanticConfigurationName = _semanticConfigName
+            },
+            VectorSearch = new VectorSearchOptions
+            {
+                Queries =
+                {
+                    new VectorizableTextQuery(query)
+                    {
+                        KNearestNeighborsCount = records,
+                        Fields = { "text_vector" }
+                    }
+                }
             }
         };
         options.SearchFields.Add("chunk");
@@ -59,6 +70,17 @@ public class AzureSearchDocumentSearchAdapter : ISearchService
             SemanticSearch = new SemanticSearchOptions
             {
                 SemanticConfigurationName = _semanticConfigName
+            },
+            VectorSearch = new VectorSearchOptions
+            {
+                Queries =
+                {
+                    new VectorizableTextQuery(query)
+                    {
+                        KNearestNeighborsCount = records,
+                        Fields = { "text_vector" }
+                    }
+                }
             }
         };
         options.Select.Add("chunk_id");
