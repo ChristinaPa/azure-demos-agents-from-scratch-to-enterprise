@@ -19,7 +19,13 @@ RUN dotnet publish "ASE.EnterpriseApi.csproj" -c $BUILD_CONFIGURATION -o /app/pu
 FROM base AS final
 WORKDIR /app
 ENV ASPNETCORE_HTTP_PORTS=80
+ENV ASPNETCORE_ENVIRONMENT=Production
 ENV DOTNET_RUNNING_IN_CONTAINER=true
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
+# Azure AI Search configuration - override at runtime
+ENV Search__Environment=AZURE
+ENV Search__AzureSearchEndpoint=
+ENV Search__AzureSearchIndexName=
+ENV Search__AzureSearchApiKey=
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "ASE.EnterpriseApi.dll"]
