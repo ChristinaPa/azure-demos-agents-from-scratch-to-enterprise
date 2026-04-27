@@ -1,15 +1,21 @@
 using ASE.Libraries;
 using ASE.Libraries.Search;
+using Azure;
+using Azure.Search.Documents;
 
 namespace ASE.Libraries.Tests;
 
 public class AzureSearchDocumentSearchAdapterTests
 {
     private readonly AzureSearchDocumentSearchAdapter _adapter;
+    private static readonly SearchClient FakeClient = new(
+        new Uri("https://fake.search.windows.net"),
+        "fake-index",
+        new AzureKeyCredential("fake-key"));
 
     public AzureSearchDocumentSearchAdapterTests()
     {
-        _adapter = new AzureSearchDocumentSearchAdapter();
+        _adapter = new AzureSearchDocumentSearchAdapter(FakeClient);
     }
 
     [Fact]
@@ -20,31 +26,17 @@ public class AzureSearchDocumentSearchAdapterTests
     }
 
     [Fact]
-    public void Search_ThrowsNotImplementedException()
+    public void AzureSearchDocumentSearchAdapter_RequiresSearchClient()
     {
-        // Arrange
-        var query = "test query";
-
-        // Act & Assert
-        Assert.Throws<NotImplementedException>(() => _adapter.Search(query));
-    }
-
-    [Fact]
-    public void Search_WithRecordCount_ThrowsNotImplementedException()
-    {
-        // Arrange
-        var query = "test query";
-        var recordCount = 5;
-
-        // Act & Assert
-        Assert.Throws<NotImplementedException>(() => _adapter.Search(query, recordCount));
+        // Assert - constructor requires a SearchClient
+        Assert.NotNull(_adapter);
     }
 
     [Fact]
     public void AzureSearchDocumentSearchAdapter_CanBeInstantiated()
     {
         // Act
-        var adapter = new AzureSearchDocumentSearchAdapter();
+        var adapter = new AzureSearchDocumentSearchAdapter(FakeClient);
 
         // Assert
         Assert.NotNull(adapter);

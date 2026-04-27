@@ -3,6 +3,7 @@ using ASE.EnterpriseApi.Options;
 using ASE.EnterpriseApi.Routes;
 using ASE.Libraries.General;
 using ASE.Libraries.Search;
+using Azure;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.HttpOverrides;
 
@@ -57,9 +58,20 @@ var searchConfig = builder.Configuration.GetSection(SearchOptions.SectionName).G
     ?? throw new InvalidOperationException("Search configuration section is missing.");
 
 if (searchConfig.Environment.Equals("LOCAL", StringComparison.OrdinalIgnoreCase))
+{
     builder.Services.AddScoped<ISearchService, DocumentSearchAdapter>();
+}
 else
-    builder.Services.AddScoped<ISearchService, AzureSearchDocumentSearchAdapter>();
+{
+    builder.Services.AddSingleton(_ => new Azure.Search.Documents.SearchClient(
+        new Uri(searchConfig.AzureSearchEndpoint),
+        searchConfig.AzureSearchIndexName,
+        new AzureKeyCredential(searchConfig.AzureSearchApiKey)));
+    builder.Services.AddScoped<ISearchService>(sp =>
+        new AzureSearchDocumentSearchAdapter(
+            sp.GetRequiredService<Azure.Search.Documents.SearchClient>(),
+            searchConfig.AzureSearchSemanticConfig));
+}
 
 #region Run Configuration
 

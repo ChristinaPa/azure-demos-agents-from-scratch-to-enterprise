@@ -8,4 +8,9 @@ public class SearchOptions
 
     [Required]
     public string Environment { get; set; } = string.Empty;
+
+    public string AzureSearchEndpoint { get; set; } = string.Empty;
+    public string AzureSearchIndexName { get; set; } = string.Empty;
+    public string AzureSearchApiKey { get; set; } = string.Empty;
+    public string AzureSearchSemanticConfig { get; set; } = string.Empty;
 }
