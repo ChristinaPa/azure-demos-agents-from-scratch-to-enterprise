@@ -2,7 +2,7 @@
 
 [![.NET](https://img.shields.io/badge/.NET-10.0-512BD4?logo=dotnet)](https://dotnet.microsoft.com/)
 [![Azure](https://img.shields.io/badge/Azure-AI%20Foundry-0078D4?logo=microsoft-azure)](https://azure.microsoft.com/)
-[![Tests](https://img.shields.io/badge/tests-51%20passed-success)](./tests/)
+[![Tests](https://img.shields.io/badge/tests-65%20passed-success)](./tests/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 
 > **Progressive demonstrations of building AI agents from simple implementations to enterprise-ready solutions using Azure AI services.**

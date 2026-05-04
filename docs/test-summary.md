@@ -11,8 +11,8 @@
 
 | Metric | Value | Status |
 |--------|-------|--------|
-| **Total Tests** | 51 | ✅ |
-| **Passed** | 51 | ✅ |
+| **Total Tests** | 65 | ✅ |
+| **Passed** | 65 | ✅ |
 | **Failed** | 0 | ✅ |
 | **Skipped** | 0 | ✅ |
 | **Success Rate** | 100% | ✅ |
@@ -209,7 +209,54 @@ Tests for the `ISearchService` interface definition.
 
 ---
 
-## 📈 Test Quality Metrics
+## 📦 ASE.EnterpriseApi.Tests (14 tests)
+
+### 8. CorsOptionsTests (6 tests)
+**Status:** ✅ All Passing
+
+Tests the `CorsOptions` configuration class used for Cross-Origin Resource Sharing policy settings.
+
+| # | Test Name | Status |
+|---|-----------|--------|
+| 1 | `SectionName_IsCorrect` | ✅ |
+| 2 | `AllowedOrigins_Required_FailsValidationWhenNull` | ✅ |
+| 3 | `AllowedOrigins_Required_FailsValidationWhenEmpty` | ✅ |
+| 4 | `AllowedOrigins_PassesValidationWithAtLeastOneOrigin` | ✅ |
+| 5 | `AllowedOrigins_PassesValidationWithMultipleOrigins` | ✅ |
+| 6 | `BindFromConfiguration_PopulatesAllowedOrigins` | ✅ |
+
+**Coverage:**
+- ✅ Section name constant
+- ✅ Required field validation (null and empty)
+- ✅ Valid single and multiple origins
+- ✅ Configuration binding
+
+---
+
+### 9. SearchOptionsTests (8 tests)
+**Status:** ✅ All Passing
+
+Tests the `SearchOptions` configuration class used for search environment settings.
+
+| # | Test Name | Status |
+|---|-----------|--------|
+| 1 | `SectionName_IsCorrect` | ✅ |
+| 2 | `Environment_Required_FailsValidationWhenNull` | ✅ |
+| 3 | `Environment_Required_FailsValidationWhenEmpty` | ✅ |
+| 4 | `Environment_PassesValidationWithLocalValue` | ✅ |
+| 5 | `Environment_PassesValidationWithAzureValue` | ✅ |
+| 6 | `Environment_PassesValidationWithLowercaseValue` | ✅ |
+| 7 | `BindFromConfiguration_PopulatesEnvironment` | ✅ |
+| 8 | `BindFromConfiguration_PopulatesAzureEnvironment` | ✅ |
+
+**Coverage:**
+- ✅ Section name constant
+- ✅ Required field validation (null and empty)
+- ✅ Local and Azure environment values
+- ✅ Case-insensitive value handling
+- ✅ Configuration binding for multiple environments
+
+---
 
 ### Code Coverage
 - **Library Components:** Comprehensive coverage
@@ -237,7 +284,7 @@ Tests for the `ISearchService` interface definition.
 
 | Category | Count | Description |
 |----------|-------|-------------|
-| **Unit Tests** | 51 | Test individual components in isolation |
+| **Unit Tests** | 65 | Test individual components in isolation |
 | **Model Tests** | 10 | Validate data models and properties |
 | **Business Logic Tests** | 26 | Test search and generation logic |
 | **Interface Tests** | 4 | Test interface definitions and implementations |

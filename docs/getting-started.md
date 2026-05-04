@@ -181,9 +181,9 @@ dotnet test --logger "console;verbosity=detailed"
 **Expected output:**
 ```
 Test Run Successful.
-Total tests: 17
-     Passed: 17
- Total time: ~2 seconds
+Total tests: 51
+     Passed: 51
+ Total time: ~8 seconds
 ```
 
 For more testing information, see [Testing Documentation](./testing.md).
@@ -270,8 +270,6 @@ Now that you have the project running, explore these topics:
 1. 📖 [Architecture Overview](./architecture.md) - Understand the system design
 2. 📖 [Projects Documentation](./projects.md) - Deep dive into each project
 3. 📖 [Configuration Guide](./configuration.md) - Advanced configuration options
-4. 📖 [Examples](./examples.md) - Learn from code samples
-5. 📖 [API Reference](./api-reference.md) - Explore the libraries
 
 ---
 

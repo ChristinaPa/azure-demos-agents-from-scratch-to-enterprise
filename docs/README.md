@@ -165,7 +165,7 @@ This project demonstrates the progression to enterprise-ready AI agents:
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please read our [contributing guidelines](../CONTRIBUTING.md) before submitting pull requests.
+Contributions are welcome! Please open an issue or pull request on GitHub.
 
 ---
 

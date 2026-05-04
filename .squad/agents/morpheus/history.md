@@ -22,3 +22,13 @@
 - **Allowed origins:** `http/https://localhost:5173` (Vite dev), `http/https://localhost:4173` (Vite preview), `http/https://localhost:3000`
 - **Middleware pipeline order:** `UseForwardedHeaders` → `UseCors("AllowVueApp")` → `MapGroup(...)` → `UseExceptionHandler` → `MapHealthChecks`
 - `UseCors` MUST be placed before route mapping (`MapGroup`) for it to apply to endpoint responses
+
+### API integration tests with WebApplicationFactory (2025-07-17)
+- **WebApplicationFactory:** `Program` already declares `public partial class Program { }` which enables `WebApplicationFactory<Program>` without any changes to the API project.
+- **Options validation (`ValidateOnStart`):** Both `CorsOptions` and `SearchOptions` validate on startup. Tests must supply `Cors:AllowedOrigins:0` and `Search:Environment` via `ConfigureAppConfiguration` or the factory will throw on build.
+- **Test fixture pattern:** Created `ApiWebApplicationFactory : WebApplicationFactory<Program>` as a shared fixture with `IClassFixture<ApiWebApplicationFactory>` — one `HttpClient` per test class, not per test method.
+- **DocumentSearchAdapter behaviour (LOCAL mode):** "return"/"refund" → Contoso Outdoors Return Policy; "amount" → bank transaction records; anything else → empty list.
+- **Testcontainers 4.x API:** Building from Dockerfile uses `ImageFromDockerfileBuilder` (not `ContainerBuilder`). `ContainerBuilder` does NOT have `WithDockerfileDirectory`; that method belongs to `ImageFromDockerfileBuilder`. After `await image.CreateAsync()`, pass the image to `ContainerBuilder.WithImage(image)`.
+- **`WithDockerfileDirectory(CommonDirectoryPath, string)`:** Second arg is a path *relative* to the `CommonDirectoryPath` base — e.g., `CommonDirectoryPath.GetSolutionDirectory(), "src/AgentScratchEnterprise"` sets the build context to that subfolder.
+- **scripts/run-tests.ps1:** Updated to run `ASE.EnterpriseApi.Tests` with `--filter "Category!=Integration"` by default. New `-SkipApiTests` switch allows skipping the API tests entirely (e.g., in CI without Docker).
+
