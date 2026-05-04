@@ -28,3 +28,19 @@
 - **Playwright E2E tests (chat-web-app):** 12/12 passed, 0 failed. Duration: ~35.8s.
 - **Note:** Playwright tests now live in `src/chat-web-app/` (not `src/vue-app/`).
 - **Overall status:** ✅ All 63 tests green.
+
+### Pester tests for PowerShell scripts (2025-07-17)
+
+- **Tests written:** 87 across 5 test files
+- **Test command:** `Invoke-Pester tests\scripts\ -Output Detailed`
+- **Convenience runner:** `tests\scripts\Invoke-Tests.ps1`
+- **All 87 tests passed on first clean run (after one regex fix).**
+- **Files created:**
+  - `tests/scripts/run-tests.Tests.ps1` — 18 tests (params, error handling, path construction, execution guards, exit codes)
+  - `tests/scripts/build-acr.Tests.ps1` — 29 tests (params, defaults, tag logic, az CLI check, build commands)
+  - `tests/scripts/run-backend.Tests.ps1` — 14 tests (env vars, project path, port, error handling)
+  - `tests/scripts/run-frontend.Tests.ps1` — 13 tests (directory, npm install guard, dev server, port)
+  - `tests/scripts/run-all.Tests.ps1` — 13 tests (Start-Process, both scripts referenced, ports, sleep)
+  - `tests/scripts/Invoke-Tests.ps1` — convenience runner script
+- **Strategy:** AST-based syntax validation + content regex matching. No external commands are invoked during tests — all validation is static analysis of script content and parameter metadata.
+- **Lesson:** Dynamic path construction (`Join-Path $x "Dockerfile"`) cannot be matched with a combined path regex against the source text. Test the path components separately instead.
