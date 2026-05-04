@@ -71,7 +71,7 @@ AIAgent agent = client
     });
 var question = AnsiConsole.Ask<string>("Ask your question",
     "What is the return policy?");
-AnsiConsole.MarkupLine("[green]Question:[/]" + question);
+AnsiConsole.MarkupLine("[green]Question:[/] " + question);
 var agentResponse = await agent.RunAsync(question);
 AnsiConsole.MarkupLine("[green]Answer:[/] " + agentResponse.Text);
 

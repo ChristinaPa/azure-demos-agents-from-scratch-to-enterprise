@@ -12,7 +12,7 @@ public class BasicSearchTool(ILogger<BasicSearchTool> logger,
     [McpServerTool(Name = "search_api",
         Title = "Search API for customer data")]
     [Description("Search API for customer data and return policies")]
-    public List<SearchResult> CalculateTax(string query)
+    public List<SearchResult> SearchingBasedOnConfiguration(string query)
     {
         logger.LogInformation("Received search query: {Query}", query);
         var data = searchService.Search(query);

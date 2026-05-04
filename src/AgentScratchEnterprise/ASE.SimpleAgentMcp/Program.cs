@@ -29,7 +29,7 @@ var transport = new HttpClientTransport(
     });
 var mcpClient = await McpClient.CreateAsync(transport);
 var tools = await mcpClient.ListToolsAsync();
-AnsiConsole.MarkupLine("[blue]Tools available[/]");
+AnsiConsole.MarkupLine("[blue]Tools available:[/]");
 foreach (var mcpClientTool in tools)
 {
     AnsiConsole.WriteLine($"{mcpClientTool.Name} - {mcpClientTool.Description}");
