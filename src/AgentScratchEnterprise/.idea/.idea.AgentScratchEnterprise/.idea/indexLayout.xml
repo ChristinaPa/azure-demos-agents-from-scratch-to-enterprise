@@ -2,6 +2,7 @@
 <project version="4">
   <component name="UserContentModel">
     <attachedFolders>
+      <Path>../../scripts</Path>
       <Path>../chat-web-app</Path>
     </attachedFolders>
     <explicitIncludes />
