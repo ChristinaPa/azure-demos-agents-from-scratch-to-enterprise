@@ -28,6 +28,47 @@ This repository showcases the evolution of AI agents, starting with a basic ques
 
 ---
 
+## 📊 Learning Flow - From Simple to Enterprise
+
+> Click on each step to explore detailed guides, code examples, and environment setup instructions.
+
+```mermaid
+graph TB
+    Start["🏁 Start Here<br/>15 min"] --> SA["<b>Step 1: SimpleAgent</b><br/>🤖 Basic Q&A<br/>15-30 min<br/><i>Hello World Agent</i>"]
+    
+    SA --> SAS["<b>Step 2: SimpleAgentSearch</b><br/>🔍 RAG Pattern<br/>30-45 min<br/><i>In-Memory Search</i>"]
+    
+    SAS --> EAPI["<b>Step 3: EnterpriseApi</b><br/>📡 REST Backend<br/>45-60 min<br/><i>Scalable Service</i>"]
+    
+    EAPI --> SAMCP["<b>Step 4: SimpleAgentMCP</b><br/>🔧 Tool Calling<br/>45-60 min<br/><i>Protocol Integration</i>"]
+    
+    SAMCP --> Advanced["<b>Step 5: Advanced</b><br/>⚙️ Orchestration<br/>60-90 min<br/><i>Multi-Agent Flows</i>"]
+    
+    Advanced --> WEBAPP["<b>Step 6: Web App</b><br/>💬 Chat UI<br/>30-45 min<br/><i>End-User Experience</i>"]
+    
+    WEBAPP --> End["✨ Enterprise Ready<br/>5 hours total"]
+    
+    click SA "docs/demo-flow.md#-step-1-simpleagent---basic-qa-foundation"
+    click SAS "docs/demo-flow.md#-step-2-simpleagentsearch---rag-implementation"
+    click EAPI "docs/demo-flow.md#-step-3-enterpriseapi---rest-api--search-backend"
+    click SAMCP "docs/demo-flow.md#-step-4-simpleagentmcp---mcp-protocol-integration"
+    click Advanced "docs/demo-flow.md#-step-5-advanced---multi-agent-orchestration"
+    click WEBAPP "docs/demo-flow.md#-step-6-web-app---chat-interface"
+    
+    style Start fill:#90EE90,stroke:#333,stroke-width:2px,color:#000
+    style SA fill:#87CEEB,stroke:#333,stroke-width:2px
+    style SAS fill:#87CEEB,stroke:#333,stroke-width:2px
+    style EAPI fill:#FFB6C1,stroke:#333,stroke-width:2px
+    style SAMCP fill:#DDA0DD,stroke:#333,stroke-width:2px
+    style Advanced fill:#F0E68C,stroke:#333,stroke-width:2px
+    style WEBAPP fill:#98FB98,stroke:#333,stroke-width:2px
+    style End fill:#FFA500,stroke:#333,stroke-width:2px,color:#fff
+```
+
+📖 **[→ Complete Demo Flow Guide with all steps, code examples, and environment setup](./docs/demo-flow.md)**
+
+---
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -186,6 +227,8 @@ Comprehensive documentation is available in the [`docs/`](./docs/) folder:
 
 | Document | Description |
 |----------|-------------|
+| [🚀 **Demo Flow Guide**](./docs/demo-flow.md) | **Start here!** Step-by-step learning path with code examples and environment setup |
+| [🔗 **Project Reference Map**](./docs/project-reference.md) | Project relationships, dependencies, and quick execution commands |
 | [📖 Getting Started](./docs/getting-started.md) | Installation, setup, and first steps |
 | [🏗 Architecture](./docs/architecture.md) | System design and component overview |
 | [📦 Projects](./docs/projects.md) | Detailed project documentation |

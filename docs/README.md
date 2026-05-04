@@ -6,14 +6,16 @@ Welcome to the comprehensive documentation for the **Azure AI Agents** project. 
 
 ## 📖 Table of Contents
 
-1. [Getting Started](./getting-started.md) - Prerequisites, installation, and setup
-2. [Architecture](./architecture.md) - System design and component overview
-3. [Projects](./projects.md) - Detailed information about each project
-4. [Configuration](./configuration.md) - Environment variables and settings
-5. [Testing](./testing.md) - Testing strategy and running tests
-6. [Test Summary](./test-summary.md) - Comprehensive test results and coverage
-7. [Troubleshooting](./troubleshooting.md) - Common issues and solutions
-8. [📊 Diagrams](./diagrams.md) - Mermaid diagrams: architecture, flows, class relationships, test coverage
+1. [🚀 **Demo Flow Guide**](./demo-flow.md) - **Start here!** Step-by-step learning path from simple to enterprise
+2. [🔗 **Project Reference Map**](./project-reference.md) - Project relationships, dependencies, and quick commands
+3. [Getting Started](./getting-started.md) - Prerequisites, installation, and setup
+4. [Architecture](./architecture.md) - System design and component overview
+5. [Projects](./projects.md) - Detailed information about each project
+6. [Configuration](./configuration.md) - Environment variables and settings
+7. [Testing](./testing.md) - Testing strategy and running tests
+8. [Test Summary](./test-summary.md) - Comprehensive test results and coverage
+9. [Troubleshooting](./troubleshooting.md) - Common issues and solutions
+10. [📊 Diagrams](./diagrams.md) - Mermaid diagrams: architecture, flows, class relationships, test coverage
 
 ---
 
