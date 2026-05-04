@@ -148,15 +148,16 @@ public class DocumentSearchAdapter : ISearchService
                     PropertyNameCaseInsensitive = true
                 });
 
-            if (IsValid(entry))
+            if (entry != null && IsValid(entry))
             {
                 list.AddRange(entry);
                 return true;
             }
         }
-        catch (JsonException)
+        catch (JsonException err)
         {
             // Invalid JSON → skip
+            Debug.WriteLine(err);
         }
 
         return false;
