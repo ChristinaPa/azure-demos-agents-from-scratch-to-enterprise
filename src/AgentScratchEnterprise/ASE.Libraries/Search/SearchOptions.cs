@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace ASE.EnterpriseApi.Options;
+namespace ASE.Libraries.Search;
 
 public class SearchOptions
 {
@@ -11,7 +11,6 @@ public class SearchOptions
 
     public string AzureSearchEndpoint { get; set; } = string.Empty;
     public string AzureSearchIndexName { get; set; } = string.Empty;
-    public string AzureSearchApiKey { get; set; } = string.Empty;
     public string AzureSearchSemanticConfig { get; set; } = string.Empty;
     public string KnowledgeBaseName { get; set; } = string.Empty;
 }

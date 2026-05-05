@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using ASE.EnterpriseApi.Options;
+using ASE.Libraries.Search;
 using Microsoft.Extensions.Configuration;
 
 namespace ASE.EnterpriseApi.Tests;

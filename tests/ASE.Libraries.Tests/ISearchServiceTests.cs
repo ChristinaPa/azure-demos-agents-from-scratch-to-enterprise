@@ -1,7 +1,6 @@
 using ASE.Libraries;
 using ASE.Libraries.Search;
-using Azure;
-using Azure.Search.Documents;
+using Microsoft.Extensions.Options;
 
 namespace ASE.Libraries.Tests;
 
@@ -39,11 +38,15 @@ public class ISearchServiceTests
     public void AzureSearchDocumentSearchAdapter_ImplementsISearchService()
     {
         // Act
-        var client = new SearchClient(
-            new Uri("https://fake.search.windows.net"),
-            "fake-index",
-            new AzureKeyCredential("fake-key"));
-        var adapter = new AzureSearchDocumentSearchAdapter(client);
+        var options = Options.Create(new SearchOptions
+        {
+            Environment = "AZURE",
+            AzureSearchEndpoint = "https://fake.search.windows.net",
+            AzureSearchIndexName = "fake-index",
+            AzureSearchSemanticConfig = "fake-semantic",
+            KnowledgeBaseName = "fake-kb"
+        });
+        var adapter = new AzureSearchDocumentSearchAdapter(options);
 
         // Assert
         Assert.IsAssignableFrom<ISearchService>(adapter);

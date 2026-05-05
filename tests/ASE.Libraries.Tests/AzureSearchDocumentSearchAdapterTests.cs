@@ -1,21 +1,24 @@
 using ASE.Libraries;
 using ASE.Libraries.Search;
-using Azure;
-using Azure.Search.Documents;
+using Microsoft.Extensions.Options;
 
 namespace ASE.Libraries.Tests;
 
 public class AzureSearchDocumentSearchAdapterTests
 {
     private readonly AzureSearchDocumentSearchAdapter _adapter;
-    private static readonly SearchClient FakeClient = new(
-        new Uri("https://fake.search.windows.net"),
-        "fake-index",
-        new AzureKeyCredential("fake-key"));
+    private static readonly IOptions<SearchOptions> FakeOptions = Options.Create(new SearchOptions
+    {
+        Environment = "AZURE",
+        AzureSearchEndpoint = "https://fake.search.windows.net",
+        AzureSearchIndexName = "fake-index",
+        AzureSearchSemanticConfig = "fake-semantic",
+        KnowledgeBaseName = "fake-kb"
+    });
 
     public AzureSearchDocumentSearchAdapterTests()
     {
-        _adapter = new AzureSearchDocumentSearchAdapter(FakeClient);
+        _adapter = new AzureSearchDocumentSearchAdapter(FakeOptions);
     }
 
     [Fact]
@@ -26,9 +29,9 @@ public class AzureSearchDocumentSearchAdapterTests
     }
 
     [Fact]
-    public void AzureSearchDocumentSearchAdapter_RequiresSearchClient()
+    public void AzureSearchDocumentSearchAdapter_RequiresOptions()
     {
-        // Assert - constructor requires a SearchClient
+        // Assert - constructor requires IOptions<SearchOptions>
         Assert.NotNull(_adapter);
     }
 
@@ -36,7 +39,7 @@ public class AzureSearchDocumentSearchAdapterTests
     public void AzureSearchDocumentSearchAdapter_CanBeInstantiated()
     {
         // Act
-        var adapter = new AzureSearchDocumentSearchAdapter(FakeClient);
+        var adapter = new AzureSearchDocumentSearchAdapter(FakeOptions);
 
         // Assert
         Assert.NotNull(adapter);
