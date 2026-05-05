@@ -4,6 +4,7 @@ using ASE.EnterpriseApi.Routes;
 using ASE.Libraries.General;
 using ASE.Libraries.Search;
 using Azure;
+using Azure.Identity;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.HttpOverrides;
 
@@ -63,14 +64,27 @@ if (searchConfig.Environment.Equals("LOCAL", StringComparison.OrdinalIgnoreCase)
 }
 else
 {
-    builder.Services.AddSingleton(_ => new Azure.Search.Documents.SearchClient(
-        new Uri(searchConfig.AzureSearchEndpoint),
-        searchConfig.AzureSearchIndexName,
-        new AzureKeyCredential(searchConfig.AzureSearchApiKey)));
+    builder.Services.AddSingleton(_ =>
+    {
+        if (!string.IsNullOrWhiteSpace(searchConfig.AzureSearchApiKey))
+        {
+            return new Azure.Search.Documents.SearchClient(
+                new Uri(searchConfig.AzureSearchEndpoint),
+                searchConfig.AzureSearchIndexName,
+                new AzureKeyCredential(searchConfig.AzureSearchApiKey));
+        }
+
+        return new Azure.Search.Documents.SearchClient(
+            new Uri(searchConfig.AzureSearchEndpoint),
+            searchConfig.AzureSearchIndexName,
+            new DefaultAzureCredential());
+    });
     builder.Services.AddScoped<ISearchService>(sp =>
         new AzureSearchDocumentSearchAdapter(
             sp.GetRequiredService<Azure.Search.Documents.SearchClient>(),
-            searchConfig.AzureSearchSemanticConfig));
+            searchConfig.AzureSearchSemanticConfig,
+            searchConfig.AzureSearchEndpoint,
+            searchConfig.KnowledgeBaseName));
 }
 
 #region Run Configuration

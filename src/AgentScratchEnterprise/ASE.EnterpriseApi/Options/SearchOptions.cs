@@ -13,4 +13,5 @@ public class SearchOptions
     public string AzureSearchIndexName { get; set; } = string.Empty;
     public string AzureSearchApiKey { get; set; } = string.Empty;
     public string AzureSearchSemanticConfig { get; set; } = string.Empty;
+    public string KnowledgeBaseName { get; set; } = string.Empty;
 }
